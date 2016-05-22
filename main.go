@@ -1,11 +1,13 @@
 package main
 
 import (
+	"bufio"
 	"crypto/tls"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -83,18 +85,28 @@ func intToString(a int) string {
 
 func start(urlname string) {
 	// for i := 0; i < 101; i++ {
-	fullName := fmt.Sprintf("%s", urlname)
+	fullName := fmt.Sprintf("%s%02d", urlname, 1)
+	fullName2 := fmt.Sprintf("%s", urlname)
 	// fmt.Println(fullName)
 	page(fullName)
+	page(fullName2)
 	// }
 
 }
 
 var wg sync.WaitGroup
 
+func writeToFile(text string) {
+	fileHandle, _ := os.Create("output.txt")
+	writer := bufio.NewWriter(fileHandle)
+	defer fileHandle.Close()
+
+	fmt.Fprintln(writer, text)
+	writer.Flush()
+}
 func main() {
 	var going int = 0
-	for i := 0; i < 45679; i++ {
+	for i := 0; i < 208827064576; i++ {
 		numToURL := ""
 		if i < 24 {
 			numToURL = lowercaseArray[i]
@@ -109,8 +121,10 @@ func main() {
 		}(numToURL)
 
 		going++
-		if going == 500 {
+		if going == 2000 {
 			wg.Wait()
+			iStr := strconv.Itoa(i)
+			writeToFile(iStr)
 			going = 0
 		}
 	}
