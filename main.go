@@ -5,6 +5,7 @@ import (
 	"crypto/tls"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"strconv"
@@ -76,7 +77,7 @@ func intToString(a int) string {
 
 	// make the original number
 	for _, b := range b {
-		o = append(o, 96+byte(a/b))
+		o = append(o, 97+byte(a/b))
 		a = a % b
 	}
 	return string(o)
@@ -104,9 +105,20 @@ func writeToFile(text string) {
 	fmt.Fprintln(writer, text)
 	writer.Flush()
 }
+
+func readRecord() int {
+	dat, err := ioutil.ReadFile("output.txt")
+	check(err)
+	f := string(dat)
+	record, err := strconv.Atoi(f)
+	check(err)
+	return record
+}
 func main() {
 	var going int = 0
-	for i := 0; i < 208827064576; i++ {
+	startnum := readRecord()
+	fmt.Print(startnum)
+	for i := 4108898; i < 208827064576; i++ {
 		numToURL := ""
 		if i < 24 {
 			numToURL = lowercaseArray[i]
@@ -121,7 +133,7 @@ func main() {
 		}(numToURL)
 
 		going++
-		if going == 2000 {
+		if going == 300 {
 			wg.Wait()
 			iStr := strconv.Itoa(i)
 			writeToFile(iStr)
