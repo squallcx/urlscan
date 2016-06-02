@@ -110,6 +110,7 @@ func readRecord() int {
 	dat, err := ioutil.ReadFile("output.txt")
 	check(err)
 	f := string(dat)
+	f = strings.Replace(f, "\n", "", 2)
 	record, err := strconv.Atoi(f)
 	check(err)
 	return record
@@ -118,7 +119,7 @@ func main() {
 	var going int = 0
 	startnum := readRecord()
 	fmt.Print(startnum)
-	for i := 4108898; i < 208827064576; i++ {
+	for i := startnum; i < 208827064576; i++ {
 		numToURL := ""
 		if i < 24 {
 			numToURL = lowercaseArray[i]
@@ -133,7 +134,7 @@ func main() {
 		}(numToURL)
 
 		going++
-		if going == 300 {
+		if going == 100 {
 			wg.Wait()
 			iStr := strconv.Itoa(i)
 			writeToFile(iStr)

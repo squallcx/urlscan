@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>訪客留言板</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" BACKGROUND="bg.jpg" onload="dynAnimation()">
+<CENTER>
+<IMG SRC="GBook.gif">
+
+[<A HREF="Index.ASP"><FONT COLOR="red" onmouseover="this.style.color='#0000BB'" onmouseout="this.style.color='red'">看看留言</FONT></A>]
+
+<FORM action="GForm.asp" method="post">
+
+<TABLE BORDER="0">
+<TR>
+
+<TD><IMG SRC="BUTTOM-B.GIF">您的姓名：</TD>
+<TD COLSPAN="2"><INPUT TYPE="TEXT" Name="Name" SIZE="37"></TD>
+
+</TR>
+<TR>
+
+<TD><IMG SRC="BUTTOM-B.GIF">您的性別：</TD>
+<TD><INPUT TYPE="RADIO" Name="Sex" VALUE="Man">男</TD>
+<TD><INPUT TYPE="RADIO" Name="Sex" VALUE="Female">女</TD>
+
+</TR>
+<TR>
+
+<TD><IMG SRC="BUTTOM-B.GIF">您的職業：</TD>
+<TD COLSPAN="2"><select Name="Job">
+<option>教師
+<option>學生
+<option>上班族
+<option>軍警
+<option>公務員
+<option>服務業
+<option>金融業
+<option>資訊業
+<option>出版業
+<option>作家
+<option>農業
+<option>工業
+<option>商業
+<option>娛樂業
+<option>演藝業
+<option>自由業
+<option>其它
+</select></TD>
+
+</TR>
+<TR>
+
+<TD><IMG SRC="BUTTOM-B.GIF">電子郵件：</TD>
+<TD COLSPAN="2"><INPUT TYPE="TEXT" Name="Email" SIZE="37"></TD>
+
+</TR>
+<TR>
+
+<TD><IMG SRC="BUTTOM-B.GIF">網頁位址：</TD>
+<TD COLSPAN="2"><INPUT TYPE="TEXT" Name="HomePage" VALUE="http://" SIZE="37"></TD>
+
+</TR>
+<TR>
+
+<TD COLSPAN="3"><IMG SRC="BUTTOM-B.GIF">留言內容：</TD></TR><TR>
+<TD COLSPAN="3"><TEXTAREA Name="Memo" ROWS="8" COLS="50"></TEXTAREA></TD>
+
+</TR>
+<TR>
+
+<TD COLSPAN="3">
+<INPUT TYPE="Submit" VALUE="確定送出">
+<INPUT TYPE="Reset" VALUE="擦掉重寫">
+</TD>
+
+</TR>
+</TABLE>
+</BODY>
+</HTML>
